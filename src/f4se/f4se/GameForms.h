@@ -722,7 +722,7 @@ public:
 	TESFullName       fullName;             // 20
 	TESDescription    description;          // 30
 
-#if _MSC_VER == 1700
+#if _MSC_VER >= 1700
 	std::function<void(Actor *, ActorValueInfo&, float, float, Actor *)> calcFunction;	// 48
 #else
 	void            * func_vtable;			// 48 - vtable of the lambda function
@@ -735,7 +735,7 @@ public:
 	UInt64            unk70;                // 70
 	ActorValueInfo  * dependentAVs[0xF];    // 78
 
-#if _MSC_VER == 1700
+#if _MSC_VER >= 1700
 	std::function<float(ActorValueOwner*, ActorValueInfo&)> derivedFunction;	// F0
 #else
 	void            * derived_func_vtable;	// F0 - vtable of the lambda function
@@ -768,7 +768,7 @@ public:
 	UInt32    unk188;                       // 188
 	UInt32    unk18C;                       // 18C
 };
-STATIC_ASSERT(offsetof(ActorValueInfo, avName) == 0x68);
+//STATIC_ASSERT(offsetof(ActorValueInfo, avName) == 0x68);
 
 // 80
 class BGSMaterialType : public TESForm

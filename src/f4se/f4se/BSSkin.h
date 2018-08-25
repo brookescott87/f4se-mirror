@@ -20,6 +20,8 @@ public:
 		void					* unk20;	// 20
 	};
 
+	typedef UInt64 __m128[2];
+
 	// C0
 	class Instance : public NiObject
 	{
