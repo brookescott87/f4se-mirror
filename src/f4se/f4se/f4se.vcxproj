@@ -254,6 +254,7 @@
     <ProjectGuid>{A236F69D-8FF9-4491-AC5F-45BF49448BBE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>f4se</RootNamespace>
+    <Fallout4Path>$(ProjectDir)..\..\..</Fallout4Path>
     <SccProjectName>SAK</SccProjectName>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
@@ -283,10 +284,13 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros" >
+    <FooBuilder>bar</FooBuilder>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)_1_10_106</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -299,7 +303,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;F4SE_EXPORTS;RUNTIME;RUNTIME_VERSION=0x010A06A0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..;$(ProjectDir)..\..</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
