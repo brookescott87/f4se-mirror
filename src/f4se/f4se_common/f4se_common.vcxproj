@@ -32,7 +32,7 @@
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{20C6411C-596F-4B85-BE4E-8BC91F59D8A6}</ProjectGuid>
+    <ProjectGuid>{f1447a44-f26a-4680-8e20-2d9186766e51}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>f4se_common</RootNamespace>
     <SccProjectName>Perforce Project</SccProjectName>
