@@ -34,3 +34,14 @@
 
 # Compiled Papyrus scripts
 *.pex
+
+# Visual Studio cruft
+.vs/
+~AutoRecover.*.vcxproj
+*.vcxproj.user
+
+# Created directories
+
+Release/
+Debug/
+x64/
