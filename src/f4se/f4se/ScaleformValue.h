@@ -7,7 +7,7 @@
 class GFxMovieRoot;
 
 // 20
-class GFxValue
+class __declspec(dllexport) GFxValue
 {
 public:
 	GFxValue()					: objectInterface(NULL), type(kType_Undefined), unk18(nullptr)	{ data.obj = nullptr; }
