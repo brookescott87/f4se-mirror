@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="f4se.cpp" />
+    <ClCompile Include="Hooks_Camera.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Debug.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Gameplay.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Input.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Memory.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_ObScript.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Papyrus.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_SaveLoad.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Scaleform.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_GameData.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks_Threads.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomMenu.cpp">
+      <Filter>internal</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMap.cpp">
+      <Filter>internal</Filter>
+    </ClCompile>
+    <ClCompile Include="InternalSerialization.cpp">
+      <Filter>internal</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>internal</Filter>
+    </ClCompile>
+    <ClCompile Include="Serialization.cpp">
+      <Filter>internal</Filter>
+    </ClCompile>
+    <ClCompile Include="Translation.cpp">
+      <Filter>internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\f4se_common\f4se_version.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="hooks">
+      <UniqueIdentifier>{b30c8951-8e51-4ffe-b38c-2e0592ff4d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="internal">
+      <UniqueIdentifier>{11ba2787-30c1-4a7e-82bf-6f9658f392b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Hooks_Camera.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Debug.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Gameplay.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Input.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Memory.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_ObScript.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Papyrus.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_SaveLoad.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Scaleform.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_GameData.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks_Threads.h">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomMenu.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMap.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+    <ClInclude Include="InternalSerialization.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginAPI.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialization.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Translation.h">
+      <Filter>internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
