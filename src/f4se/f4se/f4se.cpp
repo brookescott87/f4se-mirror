@@ -114,7 +114,7 @@ void F4SE_Initialize(void)
 
 extern "C" {
 
-	void StartF4SE(void)
+	__declspec(dllexport) void StartF4SE(void)
 	{
 		F4SE_Initialize();
 	}
