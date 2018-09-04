@@ -4,15 +4,11 @@
     <ResourceCompile Include="..\f4se_common\f4se_version.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="f4se.cpp" />
     <ClCompile Include="GameSettings.cpp">
       <Filter>api</Filter>
     </ClCompile>
     <ClCompile Include="GameAPI.cpp">
       <Filter>api</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_ObScript.cpp">
-      <Filter>hooks</Filter>
     </ClCompile>
     <ClCompile Include="ObScript.cpp">
       <Filter>obscript</Filter>
@@ -53,9 +49,6 @@
     <ClCompile Include="GameObjects.cpp">
       <Filter>api</Filter>
     </ClCompile>
-    <ClCompile Include="PluginManager.cpp">
-      <Filter>internal</Filter>
-    </ClCompile>
     <ClCompile Include="GameEvents.cpp">
       <Filter>api</Filter>
     </ClCompile>
@@ -64,15 +57,6 @@
     </ClCompile>
     <ClCompile Include="ScaleformAPI.cpp">
       <Filter>scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Scaleform.cpp">
-      <Filter>hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Papyrus.cpp">
-      <Filter>hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Gameplay.cpp">
-      <Filter>hooks</Filter>
     </ClCompile>
     <ClCompile Include="ScaleformMovie.cpp">
       <Filter>scaleform</Filter>
@@ -94,9 +78,6 @@
     </ClCompile>
     <ClCompile Include="ScaleformTranslator.cpp">
       <Filter>scaleform</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Memory.cpp">
-      <Filter>hooks</Filter>
     </ClCompile>
     <ClCompile Include="GameStreams.cpp">
       <Filter>api</Filter>
@@ -131,9 +112,6 @@
     <ClCompile Include="GameThreads.cpp">
       <Filter>api</Filter>
     </ClCompile>
-    <ClCompile Include="Hooks_SaveLoad.cpp">
-      <Filter>hooks</Filter>
-    </ClCompile>
     <ClCompile Include="PapyrusVM.cpp">
       <Filter>papyrus\vm</Filter>
     </ClCompile>
@@ -145,9 +123,6 @@
     </ClCompile>
     <ClCompile Include="NiTextures.cpp">
       <Filter>netimmerse</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_GameData.cpp">
-      <Filter>hooks</Filter>
     </ClCompile>
     <ClCompile Include="PapyrusNativeFunctions.cpp">
       <Filter>papyrus\vm</Filter>
@@ -170,9 +145,6 @@
     <ClCompile Include="PapyrusActorBase.cpp">
       <Filter>papyrus\functions</Filter>
     </ClCompile>
-    <ClCompile Include="Hooks_Input.cpp">
-      <Filter>hooks</Filter>
-    </ClCompile>
     <ClCompile Include="PapyrusF4SE.cpp">
       <Filter>papyrus\functions</Filter>
     </ClCompile>
@@ -188,26 +160,11 @@
     <ClCompile Include="BSModelDB.cpp">
       <Filter>netimmerse</Filter>
     </ClCompile>
-    <ClCompile Include="Serialization.cpp">
-      <Filter>internal</Filter>
-    </ClCompile>
-    <ClCompile Include="InternalSerialization.cpp">
-      <Filter>internal</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Debug.cpp">
-      <Filter>hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Threads.cpp">
-      <Filter>hooks</Filter>
-    </ClCompile>
     <ClCompile Include="BSGraphics.cpp">
       <Filter>netimmerse</Filter>
     </ClCompile>
     <ClCompile Include="PapyrusEvents.cpp">
       <Filter>papyrus\vm</Filter>
-    </ClCompile>
-    <ClCompile Include="InputMap.cpp">
-      <Filter>internal</Filter>
     </ClCompile>
     <ClCompile Include="PapyrusUtilities.cpp">
       <Filter>papyrus\vm</Filter>
@@ -239,9 +196,6 @@
     <ClCompile Include="PapyrusInput.cpp">
       <Filter>papyrus\functions</Filter>
     </ClCompile>
-    <ClCompile Include="Translation.cpp">
-      <Filter>internal</Filter>
-    </ClCompile>
     <ClCompile Include="PapyrusForm.cpp">
       <Filter>papyrus\functions</Filter>
     </ClCompile>
@@ -259,9 +213,6 @@
     </ClCompile>
     <ClCompile Include="GameCamera.cpp">
       <Filter>api</Filter>
-    </ClCompile>
-    <ClCompile Include="Hooks_Camera.cpp">
-      <Filter>hooks</Filter>
     </ClCompile>
     <ClCompile Include="PapyrusCell.cpp">
       <Filter>papyrus\functions</Filter>
@@ -314,9 +265,6 @@
     <ClCompile Include="PapyrusFavoritesManager.cpp">
       <Filter>papyrus\functions</Filter>
     </ClCompile>
-    <ClCompile Include="CustomMenu.cpp">
-      <Filter>internal</Filter>
-    </ClCompile>
     <ClCompile Include="PapyrusArmor.cpp">
       <Filter>papyrus\functions</Filter>
     </ClCompile>
@@ -325,7 +273,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="exports.def" />
     <None Include="GameRTTI.inl">
       <Filter>api</Filter>
     </None>
@@ -352,17 +299,11 @@
     <Filter Include="api">
       <UniqueIdentifier>{9450fc4c-75b6-4488-bbcf-eb85ab09adc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="hooks">
-      <UniqueIdentifier>{4d6b0bc6-fcd2-4a6a-8d71-66b2661e6676}</UniqueIdentifier>
-    </Filter>
     <Filter Include="obscript">
       <UniqueIdentifier>{69b04711-4ce5-4233-a001-6239f33bac37}</UniqueIdentifier>
     </Filter>
     <Filter Include="netimmerse">
       <UniqueIdentifier>{0d737e95-d0ef-4c7c-8ba0-1dd5bab3aa26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="internal">
-      <UniqueIdentifier>{c674ab06-93c6-4c9e-be2c-93ce2ca09274}</UniqueIdentifier>
     </Filter>
     <Filter Include="scaleform">
       <UniqueIdentifier>{bb1e4e23-e1ba-4913-a905-60ff75e60297}</UniqueIdentifier>
@@ -383,9 +324,6 @@
     </ClInclude>
     <ClInclude Include="GameAPI.h">
       <Filter>api</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_ObScript.h">
-      <Filter>hooks</Filter>
     </ClInclude>
     <ClInclude Include="ObScript.h">
       <Filter>obscript</Filter>
@@ -426,12 +364,6 @@
     <ClInclude Include="GameObjects.h">
       <Filter>api</Filter>
     </ClInclude>
-    <ClInclude Include="PluginAPI.h">
-      <Filter>internal</Filter>
-    </ClInclude>
-    <ClInclude Include="PluginManager.h">
-      <Filter>internal</Filter>
-    </ClInclude>
     <ClInclude Include="GameEvents.h">
       <Filter>api</Filter>
     </ClInclude>
@@ -440,15 +372,6 @@
     </ClInclude>
     <ClInclude Include="ScaleformAPI.h">
       <Filter>scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Scaleform.h">
-      <Filter>hooks</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Papyrus.h">
-      <Filter>hooks</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Gameplay.h">
-      <Filter>hooks</Filter>
     </ClInclude>
     <ClInclude Include="ScaleformMovie.h">
       <Filter>scaleform</Filter>
@@ -470,9 +393,6 @@
     </ClInclude>
     <ClInclude Include="ScaleformTranslator.h">
       <Filter>scaleform</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Memory.h">
-      <Filter>hooks</Filter>
     </ClInclude>
     <ClInclude Include="GameStreams.h">
       <Filter>api</Filter>
@@ -507,9 +427,6 @@
     <ClInclude Include="GameThreads.h">
       <Filter>api</Filter>
     </ClInclude>
-    <ClInclude Include="Hooks_SaveLoad.h">
-      <Filter>hooks</Filter>
-    </ClInclude>
     <ClInclude Include="PapyrusVM.h">
       <Filter>papyrus\vm</Filter>
     </ClInclude>
@@ -521,9 +438,6 @@
     </ClInclude>
     <ClInclude Include="NiTextures.h">
       <Filter>netimmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_GameData.h">
-      <Filter>hooks</Filter>
     </ClInclude>
     <ClInclude Include="PapyrusNativeFunctions.h">
       <Filter>papyrus\vm</Filter>
@@ -558,32 +472,14 @@
     <ClInclude Include="PapyrusGame.h">
       <Filter>papyrus\functions</Filter>
     </ClInclude>
-    <ClInclude Include="Hooks_Input.h">
-      <Filter>hooks</Filter>
-    </ClInclude>
     <ClInclude Include="BSModelDB.h">
       <Filter>netimmerse</Filter>
-    </ClInclude>
-    <ClInclude Include="Serialization.h">
-      <Filter>internal</Filter>
-    </ClInclude>
-    <ClInclude Include="InternalSerialization.h">
-      <Filter>internal</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Debug.h">
-      <Filter>hooks</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Threads.h">
-      <Filter>hooks</Filter>
     </ClInclude>
     <ClInclude Include="BSGraphics.h">
       <Filter>netimmerse</Filter>
     </ClInclude>
     <ClInclude Include="PapyrusEvents.h">
       <Filter>papyrus\vm</Filter>
-    </ClInclude>
-    <ClInclude Include="InputMap.h">
-      <Filter>internal</Filter>
     </ClInclude>
     <ClInclude Include="PapyrusUtilities.h">
       <Filter>papyrus\vm</Filter>
@@ -615,9 +511,6 @@
     <ClInclude Include="PapyrusInput.h">
       <Filter>papyrus\functions</Filter>
     </ClInclude>
-    <ClInclude Include="Translation.h">
-      <Filter>internal</Filter>
-    </ClInclude>
     <ClInclude Include="PapyrusForm.h">
       <Filter>papyrus\functions</Filter>
     </ClInclude>
@@ -635,9 +528,6 @@
     </ClInclude>
     <ClInclude Include="GameCamera.h">
       <Filter>api</Filter>
-    </ClInclude>
-    <ClInclude Include="Hooks_Camera.h">
-      <Filter>hooks</Filter>
     </ClInclude>
     <ClInclude Include="PapyrusCell.h">
       <Filter>papyrus\functions</Filter>
@@ -692,9 +582,6 @@
     </ClInclude>
     <ClInclude Include="PapyrusFavoritesManager.h">
       <Filter>papyrus\functions</Filter>
-    </ClInclude>
-    <ClInclude Include="CustomMenu.h">
-      <Filter>internal</Filter>
     </ClInclude>
     <ClInclude Include="PapyrusArmor.h">
       <Filter>papyrus\functions</Filter>

@@ -17,7 +17,7 @@
     <ProjectReference Include="..\f4se_common\f4se_common.vcxproj">
       <Project>{f1447a44-f26a-4680-8e20-2d9186766e51}</Project>
     </ProjectReference>
-    <ProjectReference Include="f4se.vcxproj">
+    <ProjectReference Include="f4se_game.vcxproj">
       <Project>{a236f69d-8ff9-4491-ac5f-45bf49448bbe}</Project>
     </ProjectReference>
   </ItemGroup>

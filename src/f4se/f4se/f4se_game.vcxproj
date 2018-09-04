@@ -30,10 +30,8 @@
     <ClCompile Include="BSModelDB.cpp" />
     <ClCompile Include="BSParticleShaderEmitter.cpp" />
     <ClCompile Include="BSSkin.cpp" />
-    <ClCompile Include="CustomMenu.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameData.cpp" />
-    <ClCompile Include="f4se.cpp" />
     <ClCompile Include="GameAPI.cpp" />
     <ClCompile Include="GameEvents.cpp" />
     <ClCompile Include="GameExtraData.cpp" />
@@ -53,19 +51,6 @@
     <ClCompile Include="GameTypes.cpp" />
     <ClCompile Include="GameUtilities.cpp" />
     <ClCompile Include="GameWorkshop.cpp" />
-    <ClCompile Include="Hooks_Camera.cpp" />
-    <ClCompile Include="Hooks_Debug.cpp" />
-    <ClCompile Include="Hooks_Gameplay.cpp" />
-    <ClCompile Include="Hooks_Input.cpp" />
-    <ClCompile Include="Hooks_Memory.cpp" />
-    <ClCompile Include="Hooks_ObScript.cpp" />
-    <ClCompile Include="Hooks_Papyrus.cpp" />
-    <ClCompile Include="Hooks_SaveLoad.cpp" />
-    <ClCompile Include="Hooks_Scaleform.cpp" />
-    <ClCompile Include="Hooks_GameData.cpp" />
-    <ClCompile Include="Hooks_Threads.cpp" />
-    <ClCompile Include="InputMap.cpp" />
-    <ClCompile Include="InternalSerialization.cpp" />
     <ClCompile Include="NiExtraData.cpp" />
     <ClCompile Include="NiMaterials.cpp" />
     <ClCompile Include="NiNodes.cpp" />
@@ -117,7 +102,6 @@
     <ClCompile Include="PapyrusVM.cpp" />
     <ClCompile Include="PapyrusWaterType.cpp" />
     <ClCompile Include="PapyrusWeapon.cpp" />
-    <ClCompile Include="PluginManager.cpp" />
     <ClCompile Include="ScaleformAPI.cpp" />
     <ClCompile Include="ScaleformCallbacks.cpp" />
     <ClCompile Include="ScaleformLoader.cpp" />
@@ -127,11 +111,8 @@
     <ClCompile Include="ScaleformTranslator.cpp" />
     <ClCompile Include="ScaleformTypes.cpp" />
     <ClCompile Include="ScaleformValue.cpp" />
-    <ClCompile Include="Serialization.cpp" />
-    <ClCompile Include="Translation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="exports.def" />
     <None Include="GameRTTI.inl" />
     <None Include="PapyrusDelayFunctorsDef.inl" />
     <None Include="PapyrusDelayFunctorsDef_Base.inl" />
@@ -149,7 +130,6 @@
     <ClInclude Include="BSModelDB.h" />
     <ClInclude Include="BSParticleShaderEmitter.h" />
     <ClInclude Include="BSSkin.h" />
-    <ClInclude Include="CustomMenu.h" />
     <ClInclude Include="NiSerialization.h" />
     <ClInclude Include="PapyrusArmor.h" />
     <ClInclude Include="PapyrusArmorAddon.h" />
@@ -177,19 +157,6 @@
     <ClInclude Include="GameTypes.h" />
     <ClInclude Include="GameUtilities.h" />
     <ClInclude Include="GameWorkshop.h" />
-    <ClInclude Include="Hooks_Camera.h" />
-    <ClInclude Include="Hooks_Debug.h" />
-    <ClInclude Include="Hooks_Gameplay.h" />
-    <ClInclude Include="Hooks_Input.h" />
-    <ClInclude Include="Hooks_Memory.h" />
-    <ClInclude Include="Hooks_ObScript.h" />
-    <ClInclude Include="Hooks_Papyrus.h" />
-    <ClInclude Include="Hooks_SaveLoad.h" />
-    <ClInclude Include="Hooks_Scaleform.h" />
-    <ClInclude Include="Hooks_GameData.h" />
-    <ClInclude Include="Hooks_Threads.h" />
-    <ClInclude Include="InputMap.h" />
-    <ClInclude Include="InternalSerialization.h" />
     <ClInclude Include="NiCloningProcess.h" />
     <ClInclude Include="NiExtraData.h" />
     <ClInclude Include="NiMaterials.h" />
@@ -236,8 +203,6 @@
     <ClInclude Include="PapyrusVM.h" />
     <ClInclude Include="PapyrusWaterType.h" />
     <ClInclude Include="PapyrusWeapon.h" />
-    <ClInclude Include="PluginAPI.h" />
-    <ClInclude Include="PluginManager.h" />
     <ClInclude Include="ScaleformAPI.h" />
     <ClInclude Include="ScaleformCallbacks.h" />
     <ClInclude Include="ScaleformLoader.h" />
@@ -247,8 +212,6 @@
     <ClInclude Include="ScaleformTranslator.h" />
     <ClInclude Include="ScaleformTypes.h" />
     <ClInclude Include="ScaleformValue.h" />
-    <ClInclude Include="Serialization.h" />
-    <ClInclude Include="Translation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A236F69D-8FF9-4491-AC5F-45BF49448BBE}</ProjectGuid>
@@ -260,10 +223,11 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>f4se_game</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -287,8 +251,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>$(ProjectName)_1_10_106</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -300,7 +265,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;F4SE_EXPORTS;RUNTIME;RUNTIME_VERSION=0x010A06A0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..;$(ProjectDir)..\..</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -308,14 +273,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Fallout4Path)\$(TargetFileName)"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing DLL...</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -325,7 +283,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;F4SE_EXPORTS;RUNTIME;RUNTIME_VERSION=0x010A06A0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -336,14 +294,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Fallout4Path)\$(TargetFileName)"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing DLL...</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
