@@ -3,6 +3,7 @@
 #include "f4se_common/Relocation.h"
 #include "f4se_common/BranchTrampoline.h"
 #include "f4se_common/SafeWrite.h"
+#include "f4se_common/Options.h"
 #include <shlobj.h>
 #include "common/IFileStream.h"
 #include "Hooks_ObScript.h"
@@ -21,6 +22,28 @@
 
 IDebugLog gLog;
 void * g_moduleHandle = nullptr;
+
+Options g_options;
+
+#if 0
+char g_Flags[64];
+DWORD g_FlagCnt = 0;
+
+void InitFlags()
+{
+	memset(g_Flags, 0, sizeof(g_Flags));
+	g_FlagCnt = GetEnvironmentVariable(TEXT("F4SE_FLAGS"), g_Flags, sizeof(g_Flags));
+	if (g_FlagCnt > sizeof(g_Flags)) {
+		_ERROR("InitFlags: too many flags in F4SE_FLAGS");
+		g_FlagCnt = 0;
+	}
+}
+
+bool IsFlagSet(char ch)
+{
+	return g_FlagCnt && memchr(g_Flags, ch, g_FlagCnt);
+}
+#endif
 
 void WaitForDebugger(void)
 {
@@ -47,6 +70,7 @@ void F4SE_Initialize(void)
 
 		FILETIME	now;
 		GetSystemTimeAsFileTime(&now);
+		g_options.EnvRestore("F4SE_CMDLINE");
 
 		_MESSAGE("F4SE runtime: initialize (version = %d.%d.%d %08X %08X%08X, os = %s)",
 			F4SE_VERSION_INTEGER, F4SE_VERSION_INTEGER_MINOR, F4SE_VERSION_INTEGER_BETA, RUNTIME_VERSION,
@@ -56,9 +80,11 @@ void F4SE_Initialize(void)
 		_MESSAGE("reloc mgr imagebase = %016I64X", RelocationManager::s_baseAddr);
 
 #ifdef _DEBUG
+		_MESSAGE("DEBUG BUILD");
 		SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS);
-
-		WaitForDebugger();
+		if (g_options.m_debugWait) {
+			WaitForDebugger();
+		}
 #endif
 
 		if(!g_branchTrampoline.Create(1024 * 64))

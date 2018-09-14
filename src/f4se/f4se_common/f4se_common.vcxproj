@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClInclude Include="BranchTrampoline.h" />
     <ClInclude Include="f4se_version.h" />
+    <ClInclude Include="Options.h" />
     <ClInclude Include="Relocation.h" />
     <ClInclude Include="SafeWrite.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BranchTrampoline.cpp" />
+    <ClCompile Include="Options.cpp" />
     <ClCompile Include="Relocation.cpp" />
     <ClCompile Include="SafeWrite.cpp" />
     <ClCompile Include="Utilities.cpp" />
@@ -77,6 +79,8 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..;$(ProjectDir)..\..</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

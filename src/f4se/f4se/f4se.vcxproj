@@ -340,6 +340,8 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..;$(ProjectDir)..\..</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -364,19 +366,16 @@ copy "$(OutputPath)$(TargetName).pdb" "$(Fallout4Path)\$(TargetName).pdb"</Comma
       <AdditionalIncludeDirectories>$(ProjectDir)..;$(ProjectDir)..\..</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Fallout4Path)\$(TargetFileName)"
-copy "$(OutputPath)$(TargetName).pdb" "$(Fallout4Path)\$(TargetName).pdb"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing DLL...</Message>
-    </PostBuildEvent>
+    <PostBuildEvent />
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -428,13 +427,8 @@ copy "$(OutputPath)$(TargetName).pdb" "$(Fallout4Path)\$(TargetName).pdb"</Comma
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Fallout4Path)\$(TargetFileName)"
-copy "$(OutputPath)$(TargetName).pdb" "$(Fallout4Path)\$(TargetName).pdb"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing DLL...</Message>
-    </PostBuildEvent>
+    <PostBuildEvent />
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

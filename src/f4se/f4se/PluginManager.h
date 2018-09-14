@@ -41,6 +41,7 @@ protected:
 	};
 
 	bool	FindPluginDirectory(void);
+	bool	InstallPlugin(const char *);
 	void	InstallPlugins(void);
 
 	virtual const char *	SafeCallQueryPlugin(LoadedPlugin * plugin, const F4SEInterface * f4se);

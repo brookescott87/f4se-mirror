@@ -6,12 +6,14 @@
     <ClInclude Include="Relocation.h" />
     <ClInclude Include="SafeWrite.h" />
     <ClInclude Include="BranchTrampoline.h" />
+    <ClInclude Include="Options.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="Relocation.cpp" />
     <ClCompile Include="SafeWrite.cpp" />
     <ClCompile Include="BranchTrampoline.cpp" />
+    <ClCompile Include="Options.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="f4se_version.rc" />

@@ -1,5 +1,6 @@
 #include <ShlObj.h>
 #include "f4se_common/f4se_version.h"
+#include "f4se_common/Options.h"
 #include "f4se_common/Utilities.h"
 #include "f4se_loader_common/LoaderError.h"
 #include "f4se_loader_common/IdentifyEXE.h"
@@ -8,7 +9,8 @@
 #include <string>
 #include "common/IFileStream.h"
 #include <tlhelp32.h>
-#include "Options.h"
+
+Options g_options;
 
 IDebugLog gLog;
 
@@ -26,6 +28,8 @@ int main(int argc, char ** argv)
 
 	_MESSAGE("f4se loader %08X %08X%08X %s",
 		PACKED_F4SE_VERSION, now.dwHighDateTime, now.dwLowDateTime, GetOSInfoStr().c_str());
+
+	Options::EnvSave("F4SE_CMDLINE", argc, argv);
 
 	if(!g_options.Read(argc, argv))
 	{
@@ -154,6 +158,8 @@ int main(int argc, char ** argv)
 
 		return 1;
 	}
+
+	SetEnvironmentVariable(TEXT("F4SE_FLAGS"), g_options.m_flags.c_str());
 
 	if(g_options.m_crcOnly)
 		return 0;

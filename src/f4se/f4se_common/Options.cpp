@@ -1,13 +1,12 @@
 #include "Options.h"
 
-Options g_options;
-
 Options::Options()
 	:m_launchCS(false)
 	,m_setPriority(false)
 	,m_priority(0)
 	,m_crcOnly(false)
 	,m_optionsOnly(false)
+	,m_debugWait(false)
 	,m_waitForClose(false)
 	,m_verbose(false)
 	,m_moduleInfo(false)
@@ -126,6 +125,10 @@ bool Options::Read(int argc, char ** argv)
 						return false;
 					}
 				}
+				else if (!_stricmp(arg, "debugwait"))
+				{
+					m_debugWait = true;
+				}
 				else if(!_stricmp(arg, "crconly"))
 				{
 					m_crcOnly = true;
@@ -206,6 +209,41 @@ bool Options::Read(int argc, char ** argv)
 
 #pragma warning (pop)
 
+bool Options::EnvSave(LPCSTR envname, int argc, char **argv)
+{
+	std::string cmdline;
+	int i;
+
+	for (i = 0; i < argc; ++i) {
+		cmdline += argv[i];
+		cmdline += "\n";
+	}
+	return (bool)SetEnvironmentVariableA(envname, cmdline.c_str());
+}
+
+bool Options::EnvRestore(LPCSTR envname)
+{
+	int argc;
+	char *argv[256];
+	char cbCmdLine[32768];
+	LPSTR lpChr, lpszArg;
+
+	if (GetEnvironmentVariableA(envname, cbCmdLine, sizeof(cbCmdLine)) > sizeof(cbCmdLine))
+		return false;
+
+	memset(argv, 0, sizeof(argv));
+
+	for (lpChr = lpszArg = cbCmdLine, argc = 0; *lpChr; ++lpChr) {
+		if (*lpChr == '\n') {
+			*lpChr = '\0';
+			argv[argc++] = lpszArg;
+			lpszArg = lpChr + 1;
+		}
+	}
+
+	return Read(argc, argv);
+}
+
 void Options::PrintUsage(void)
 {
 	gLog.SetPrintLevel(IDebugLog::kLevel_VerboseMessage);
@@ -224,6 +262,7 @@ void Options::PrintUsage(void)
 	_MESSAGE("    realtime");
 	_MESSAGE("  -altexe <path> - set alternate exe path");
 	_MESSAGE("  -altdll <path> - set alternate dll path");
+	_MESSAGE("  -debugwait - wait for the debugger after loading dll");
 	_MESSAGE("  -crconly - just identify the EXE, don't launch anything");
 	_MESSAGE("  -waitforclose - wait for the launched program to close");
 	_MESSAGE("  -v - print verbose messages to the console");

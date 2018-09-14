@@ -7,6 +7,8 @@ public:
 	~Options();
 
 	bool	Read(int argc, char ** argv);
+	static bool	EnvSave(LPCSTR envname, int argc, char **argv);
+	bool	EnvRestore(LPCSTR envname);
 
 	void	PrintUsage(void);
 
@@ -17,6 +19,7 @@ public:
 
 	bool	m_optionsOnly;
 	bool	m_crcOnly;
+	bool	m_debugWait;
 	bool	m_waitForClose;
 	bool	m_verbose;
 	bool	m_moduleInfo;
@@ -29,7 +32,8 @@ public:
 
 	std::string	m_altEXE;
 	std::string	m_altDLL;
-
+	
+	std::string m_flags;
 private:
 	bool	Verify(void);
 };
