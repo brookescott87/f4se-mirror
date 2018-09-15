@@ -34,6 +34,9 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <InstallType>Fallout4</InstallType>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -43,9 +46,8 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros">
-    <Fallout4Path>$(SolutionDir)\output</Fallout4Path>
-  </PropertyGroup>
+  <Import Project="$(SolutionPath).props" Condition="Exists('$(SolutionPath).props')" />
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -71,9 +73,6 @@
       <AdditionalDependencies>version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Fallout4Path)\$(TargetFileName)"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
       <Message>Installing Loader...</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -97,12 +96,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Fallout4Path)\$(TargetFileName)"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing Loader...</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\common\common_vc11.vcxproj">
