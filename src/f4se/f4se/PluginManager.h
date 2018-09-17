@@ -29,7 +29,7 @@ public:
 	static bool Dispatch_Message(PluginHandle sender, UInt32 messageType, void * data, UInt32 dataLen, const char* receiver);
 	static bool	RegisterListener(PluginHandle listener, const char* sender, F4SEMessagingInterface::EventCallback handler);
 
-protected:
+private:
 	struct LoadedPlugin
 	{
 		// internals
@@ -41,10 +41,9 @@ protected:
 	};
 
 	bool	FindPluginDirectory(void);
-	bool	InstallPlugin(const char *);
 	void	InstallPlugins(void);
 
-	virtual const char *	SafeCallQueryPlugin(LoadedPlugin * plugin, const F4SEInterface * f4se);
+	const char *	SafeCallQueryPlugin(LoadedPlugin * plugin, const F4SEInterface * f4se);
 	const char *	SafeCallLoadPlugin(LoadedPlugin * plugin, const F4SEInterface * f4se);
 
 	const char *	CheckPluginCompatibility(LoadedPlugin * plugin);

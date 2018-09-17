@@ -231,87 +231,6 @@ bool PluginManager::FindPluginDirectory(void)
 	return result;
 }
 
-bool PluginManager::InstallPlugin(const char *pluginPath)
-{
-	bool		success = false;
-
-	_MESSAGE("checking plugin %s", pluginPath);
-
-	LoadedPlugin	plugin;
-	memset(&plugin, 0, sizeof(plugin));
-
-	s_currentLoadingPlugin = &plugin;
-	s_currentPluginHandle = m_plugins.size() + 1;	// +1 because 0 is reserved for internal use
-
-	plugin.handle = (HMODULE)LoadLibrary(pluginPath);
-	if (plugin.handle)
-	{
-		plugin.query = (_F4SEPlugin_Query)GetProcAddress(plugin.handle, "F4SEPlugin_Query");
-		plugin.load = (_F4SEPlugin_Load)GetProcAddress(plugin.handle, "F4SEPlugin_Load");
-
-		if (plugin.query && plugin.load)
-		{
-			const char	* loadStatus = NULL;
-
-			loadStatus = SafeCallQueryPlugin(&plugin, &g_F4SEInterface);
-
-			if (!loadStatus)
-			{
-				loadStatus = CheckPluginCompatibility(&plugin);
-
-				if (!loadStatus)
-				{
-					loadStatus = SafeCallLoadPlugin(&plugin, &g_F4SEInterface);
-
-					if (!loadStatus)
-					{
-						loadStatus = "loaded correctly";
-						success = true;
-					}
-				}
-			}
-			else
-			{
-				loadStatus = "reported as incompatible during query";
-			}
-
-			ASSERT(loadStatus);
-
-			_MESSAGE("plugin %s:%016llX (%08X %s %08X) %s",
-				pluginPath,
-				plugin.handle,
-				plugin.info.infoVersion,
-				plugin.info.name ? plugin.info.name : "<NULL>",
-				plugin.info.version,
-				loadStatus);
-		}
-		else
-		{
-			_MESSAGE("plugin %s does not appear to be an F4SE plugin", pluginPath);
-		}
-
-		if (success)
-		{
-			// succeeded, add it to the list
-			m_plugins.push_back(plugin);
-		}
-		else
-		{
-			// failed, unload the library
-			FreeLibrary(plugin.handle);
-		}
-	}
-	else
-	{
-		_ERROR("couldn't load plugin %s (Error %d)", pluginPath, GetLastError());
-	}
-
-	s_currentLoadingPlugin = NULL;
-	s_currentPluginHandle = 0;
-
-	return success;
-}
-
 void PluginManager::InstallPlugins(void)
 {
 	// avoid realloc
@@ -319,8 +238,83 @@ void PluginManager::InstallPlugins(void)
 
 	for(IDirectoryIterator iter(m_pluginDirectory.c_str(), "*.dll"); !iter.Done(); iter.Next())
 	{
-		InstallPlugin(iter.GetFullPath().c_str());
+		std::string	pluginPath = iter.GetFullPath();
+
+		_MESSAGE("checking plugin %s", pluginPath.c_str());
+
+		LoadedPlugin	plugin;
+		memset(&plugin, 0, sizeof(plugin));
+
+		s_currentLoadingPlugin = &plugin;
+		s_currentPluginHandle = m_plugins.size() + 1;	// +1 because 0 is reserved for internal use
+
+		plugin.handle = (HMODULE)LoadLibrary(pluginPath.c_str());
+		if(plugin.handle)
+		{
+			bool		success = false;
+
+			plugin.query = (_F4SEPlugin_Query)GetProcAddress(plugin.handle, "F4SEPlugin_Query");
+			plugin.load = (_F4SEPlugin_Load)GetProcAddress(plugin.handle, "F4SEPlugin_Load");
+
+			if(plugin.query && plugin.load)
+			{
+				const char	* loadStatus = NULL;
+
+				loadStatus = SafeCallQueryPlugin(&plugin, &g_F4SEInterface);
+
+				if(!loadStatus)
+				{
+					loadStatus = CheckPluginCompatibility(&plugin);
+
+					if(!loadStatus)
+					{
+						loadStatus = SafeCallLoadPlugin(&plugin, &g_F4SEInterface);
+
+						if(!loadStatus)
+						{
+							loadStatus = "loaded correctly";
+							success = true;
+						}
+					}
+				}
+				else
+				{
+					loadStatus = "reported as incompatible during query";
+				}
+
+				ASSERT(loadStatus);
+
+				_MESSAGE("plugin %s (%08X %s %08X) %s",
+					pluginPath.c_str(),
+					plugin.info.infoVersion,
+					plugin.info.name ? plugin.info.name : "<NULL>",
+					plugin.info.version,
+					loadStatus);
+			}
+			else
+			{
+				_MESSAGE("plugin %s does not appear to be an F4SE plugin", pluginPath.c_str());
+			}
+
+			if(success)
+			{
+				// succeeded, add it to the list
+				m_plugins.push_back(plugin);
+			}
+			else
+			{
+				// failed, unload the library
+				FreeLibrary(plugin.handle);
+			}
+		}
+		else
+		{
+			_ERROR("couldn't load plugin %s (Error %d)", pluginPath.c_str(), GetLastError());
+		}
 	}
+
+	s_currentLoadingPlugin = NULL;
+	s_currentPluginHandle = 0;
 
 	// alert any listeners that plugin load has finished
 	Dispatch_Message(0, F4SEMessagingInterface::kMessage_PostLoad, NULL, 0, NULL);
