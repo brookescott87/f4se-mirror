@@ -230,6 +230,7 @@ bool Options::EnvRestore(LPCSTR envname)
 
 	if (GetEnvironmentVariableA(envname, cbCmdLine, sizeof(cbCmdLine)) > sizeof(cbCmdLine))
 		return false;
+	_MESSAGE("%s: %s", envname, cbCmdLine);
 
 	memset(argv, 0, sizeof(argv));
 
