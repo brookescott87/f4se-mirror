@@ -230,8 +230,6 @@ bool Options::EnvRestore(LPCSTR envname)
 
 	if (GetEnvironmentVariableA(envname, cbCmdLine, sizeof(cbCmdLine)) > sizeof(cbCmdLine))
 		return false;
-	_MESSAGE("%s: %s", envname, cbCmdLine);
-
 	memset(argv, 0, sizeof(argv));
 
 	for (lpChr = lpszArg = cbCmdLine, argc = 0; *lpChr; ++lpChr) {
@@ -242,7 +240,16 @@ bool Options::EnvRestore(LPCSTR envname)
 		}
 	}
 
-	return Read(argc, argv);
+	bool bResult = Read(argc, argv);
+
+#ifdef _DEBUG
+	while (lpChr-- > cbCmdLine)
+		if (*lpChr == '\0')
+			*lpChr = ' ';
+
+	_MESSAGE("%s: %s", envname, cbCmdLine);
+#endif
+	return bResult;
 }
 
 void Options::PrintUsage(void)

@@ -70,11 +70,11 @@ void F4SE_Initialize(void)
 
 		FILETIME	now;
 		GetSystemTimeAsFileTime(&now);
-		g_options.EnvRestore("F4SE_CMDLINE");
 
 		_MESSAGE("F4SE runtime: initialize (version = %d.%d.%d %08X %08X%08X, os = %s)",
 			F4SE_VERSION_INTEGER, F4SE_VERSION_INTEGER_MINOR, F4SE_VERSION_INTEGER_BETA, RUNTIME_VERSION,
 			now.dwHighDateTime, now.dwLowDateTime, GetOSInfoStr().c_str());
+		g_options.EnvRestore("F4SE_CMDLINE");
 
 		_MESSAGE("imagebase = %016I64X", GetModuleHandle(NULL));
 		_MESSAGE("reloc mgr imagebase = %016I64X", RelocationManager::s_baseAddr);
@@ -83,6 +83,7 @@ void F4SE_Initialize(void)
 		_MESSAGE("DEBUG BUILD");
 		SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS);
 		if (g_options.m_debugWait) {
+			_MESSAGE("WaitForDebugger: %p", &WaitForDebugger);
 			WaitForDebugger();
 		}
 #endif
