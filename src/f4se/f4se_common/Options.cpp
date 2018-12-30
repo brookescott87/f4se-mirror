@@ -125,7 +125,20 @@ bool Options::Read(int argc, char ** argv)
 						return false;
 					}
 				}
-				else if (!_stricmp(arg, "debugwait"))
+                else if (!_stricmp(arg, "plugindir"))
+                {
+                    if (argc >= 1)
+                    {
+                        m_pluginDir = *argv++;
+                        argc--;
+                    }
+                    else
+                    {
+                        _ERROR("plugindir not specified");
+                        return false;
+                    }
+                }
+                else if (!_stricmp(arg, "debugwait"))
 				{
 					m_debugWait = true;
 				}
@@ -270,7 +283,8 @@ void Options::PrintUsage(void)
 	_MESSAGE("    realtime");
 	_MESSAGE("  -altexe <path> - set alternate exe path");
 	_MESSAGE("  -altdll <path> - set alternate dll path");
-	_MESSAGE("  -debugwait - wait for the debugger after loading dll");
+    _MESSAGE("  -plugindir <path> - set alternate plugin dir");
+    _MESSAGE("  -debugwait - wait for the debugger after loading dll");
 	_MESSAGE("  -crconly - just identify the EXE, don't launch anything");
 	_MESSAGE("  -waitforclose - wait for the launched program to close");
 	_MESSAGE("  -v - print verbose messages to the console");

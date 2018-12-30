@@ -1,6 +1,7 @@
 #include "PluginManager.h"
 #include "common/IDirectoryIterator.h"
 #include "GameAPI.h"
+#include "f4se_common/Options.h"
 #include "f4se_common/Utilities.h"
 #include "f4se_common/f4se_version.h"
 
@@ -217,7 +218,13 @@ UInt32 PluginManager::GetReleaseIndex( void )
 
 bool PluginManager::FindPluginDirectory(void)
 {
-	bool	result = false;
+    bool	result = false;
+
+    if (!g_options.m_pluginDir.empty())
+    {
+        m_pluginDirectory = g_options.m_pluginDir;
+        return true;
+    }
 
 	// find the path <runtime directory>/data/f4se/
 	std::string	runtimeDirectory = GetRuntimeDirectory();
