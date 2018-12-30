@@ -506,6 +506,7 @@ public:
 	BGSKeywordForm	keywordForm;	// 78
 	UnkArray		effectItemsProbably; // 98
 	UInt64			unk0B0[4];		// B0
+    class EffectItem;
 };
 STATIC_ASSERT(offsetof(MagicItem, unk0B0) == 0x0B0);
 STATIC_ASSERT(sizeof(MagicItem) == 0x0D0);
