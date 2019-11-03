@@ -25,6 +25,18 @@ namespace papyrusGame
 		return nullptr;
 	}
 
+    TESObjectREFR * GetSelectedRef(StaticFunctionTag * base)
+    {
+        UInt32 handle = (*g_selectedHandle);
+        TESObjectREFR * refr = NULL;
+        if (handle != 0 && handle != (*g_invalidRefHandle)) {
+            LookupREFRByHandle(&handle, &refr);
+            return refr;
+        }
+
+        return nullptr;
+    }
+
 	VMArray<PluginInfo> GetInstalledPlugins(StaticFunctionTag * base)
 	{
 		VMArray<PluginInfo> result;
@@ -163,7 +175,10 @@ void papyrusGame::RegisterFuncs(VirtualMachine* vm)
 	vm->RegisterFunction(
 		new NativeFunction0 <StaticFunctionTag, TESObjectREFR*>("GetCurrentConsoleRef", "Game", papyrusGame::GetCurrentConsoleRef, vm));
 
-	vm->RegisterFunction(
+    vm->RegisterFunction(
+        new NativeFunction0 <StaticFunctionTag, TESObjectREFR*>("GetSelectedRef", "Game", papyrusGame::GetSelectedRef, vm));
+
+    vm->RegisterFunction(
 		new NativeFunction0 <StaticFunctionTag, VMArray<PluginInfo>>("GetInstalledPlugins", "Game", papyrusGame::GetInstalledPlugins, vm));
 
 	vm->RegisterFunction(
