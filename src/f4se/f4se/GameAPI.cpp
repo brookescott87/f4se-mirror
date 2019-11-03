@@ -19,6 +19,8 @@ RelocPtr <ConsoleManager *> g_console(0x05919B30);
 // 1C0F98B1DC3F82F9BD55E938765C22AD25B75571+15
 RelocAddr <UInt32 *> g_consoleHandle(0x05B144A8);
 
+RelocAddr <UInt32 *> g_selectedHandle(0x059189EC);
+
 void Console_Print(const char * fmt, ...)
 {
 	ConsoleManager * mgr = *g_console;

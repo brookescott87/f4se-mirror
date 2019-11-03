@@ -25,6 +25,7 @@ public:
 
 extern RelocPtr <ConsoleManager *> g_console;
 extern RelocAddr <UInt32 *> g_consoleHandle;
+extern RelocAddr <UInt32 *> g_selectedHandle;
 
 void Console_Print(const char * fmt, ...);
 
