@@ -1,13 +1,9 @@
-cmake_minimum_required(VERSION 3.12.2)
+cmake_minimum_required(VERSION 3.8.0)
 cmake_policy(SET CMP0076 NEW)
 
-project(f4se VERSION 1.10.106)
-string(JOIN "_" F4SE_VERSION_TAG
-    ${PROJECT_VERSION_MAJOR}
-    ${PROJECT_VERSION_MINOR}
-    ${PROJECT_VERSION_PATCH}
-    ${PROJECT_VERSION_TWEAK}
-)
+include(version.cmake)
+
+project(f4se VERSION ${F4SE_VERSION_STR})
 math(EXPR F4SE_VERSION_HEX
     "0${PROJECT_VERSION_MAJOR} * 0x1000000 + \
     0${PROJECT_VERSION_MINOR} * 0x10000 + \
