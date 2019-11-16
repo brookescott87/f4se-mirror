@@ -2,17 +2,17 @@ add_compile_definitions(
   _USRDLL
   F4SE_EXPORTS
   RUNTIME
-  RUNTIME_VERSION=${F4SE_VERSION_HEX}
+  RUNTIME_VERSION=${F4SE_RUNTIME_VERSION_HEX}
 )
 
 add_library(f4se_dll SHARED)
 set_target_properties(f4se_dll PROPERTIES
-  OUTPUT_NAME f4se_${F4SE_VERSION_TAG}
+  OUTPUT_NAME f4se_${F4SE_RUNTIME_VERSION_TAG}
 )
 
 add_library(f4se_lib STATIC)
 set_target_properties(f4se_lib PROPERTIES
-  OUTPUT_NAME f4se_static_${F4SE_VERSION_TAG}
+  OUTPUT_NAME f4se_static_${F4SE_RUNTIME_VERSION_TAG}
 )
 
 foreach(VARIANT IN ITEMS f4se_dll f4se_lib)

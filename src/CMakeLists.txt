@@ -3,7 +3,7 @@ cmake_policy(SET CMP0076 NEW)
 
 include(version.cmake)
 
-project(f4se VERSION ${F4SE_VERSION_STR})
+project(f4se VERSION ${F4SE_RUNTIME_VERSION_STR})
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release"
     CACHE STRING "Configuration types" FORCE)
