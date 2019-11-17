@@ -102,6 +102,8 @@ const std::string & GetOSInfoStr()
 
 		info.dwOSVersionInfoSize = sizeof(info);
 
+#pragma warning (push)
+#pragma warning (disable: 4996)  // disable deprecation warning for GetVersionEx
 		if(GetVersionEx(&info))
 		{
 			char	buf[256];
@@ -115,6 +117,7 @@ const std::string & GetOSInfoStr()
 			result = "unknown";
 		}
 	}
+#pragma warning (pop)
 
 	return result;
 }

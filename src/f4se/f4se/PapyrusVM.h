@@ -55,7 +55,7 @@ public:
 	virtual void	RegisterFunction(IFunction * fn);
 	virtual void	SetFunctionFlagsEx(const char * className, UInt32 unk0, const char * fnName, UInt32 flags);
 	virtual void	SetFunctionFlags(const char * className, const char * fnName, UInt32 flags);
-#if _MSC_VER == 1700
+#if _MSC_VER >= 1700
 	virtual void	ForEachIdentifier(UInt64 handle, const std::function<UInt32(VMIdentifier*)> & functor); // return 1 to continue
 #else
 	virtual void	ForEachIdentifier(UInt64 handle, void * stdFunction);

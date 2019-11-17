@@ -4,6 +4,7 @@
 
 #pragma warning(disable: 4221)
 #include <cmath>
+#include <xmmintrin.h>
 
 typedef unsigned char		UInt8;		//!< An unsigned 8-bit integer value
 typedef unsigned short		UInt16;		//!< An unsigned 16-bit integer value
@@ -42,13 +43,14 @@ inline UInt32 Swap32(UInt32 in)
 
 inline UInt64 Swap64(UInt64 in)
 {
-	UInt64	temp;
-
-	temp = Swap32(in);
-	temp <<= 32;
-	temp |= Swap32(in >> 32);
-
-	return temp;
+	return	((in >> 56) & 0x00000000000000FF) |
+			((in >> 40) & 0x000000000000FF00) |
+			((in >> 24) & 0x0000000000FF0000) |
+			((in >>  8) & 0x00000000FF000000) |
+			((in <<  8) & 0x000000FF00000000) |
+			((in << 24) & 0x0000FF0000000000) |
+			((in << 40) & 0x00FF000000000000) |
+			((in << 56) & 0xFF00000000000000);
 }
 
 inline void SwapFloat(float * in)
