@@ -5,6 +5,8 @@ include(version.cmake)
 
 project(f4se VERSION ${F4SE_RUNTIME_VERSION_STR})
 
+runtime_version( F4SE_RUNTIME_VERSION_HEX )
+
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release"
     CACHE STRING "Configuration types" FORCE)
 

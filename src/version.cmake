@@ -19,5 +19,3 @@ macro( runtime_version output_var )
         0${PROJECT_VERSION_TWEAK}
     )
 endmacro()
-
-runtime_version( F4SE_RUNTIME_VERSION_HEX )
