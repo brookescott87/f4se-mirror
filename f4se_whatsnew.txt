@@ -1,3 +1,23 @@
+0.6.17
+- support for runtime 1.10.138
+
+0.6.16
+- support for runtime 1.10.130
+- Game.UpdateThirdPerson, Game.GetCameraState (based on code from Neanka, thanks)
+- fix Actor.GetWornItemMods
+
+0.6.15
+- fix crash when loading cosaves with light mod list entries
+
+0.6.14
+- support for runtime 1.10.120
+
+0.6.13
+- support for runtime 1.10.114
+
+0.6.12
+- support for runtime 1.10.111
+
 0.6.11
 - support for runtime 1.10.106
 - added InstanceData.Get/SetAddAmmoList

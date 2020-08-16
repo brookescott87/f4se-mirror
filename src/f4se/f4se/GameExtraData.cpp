@@ -2,16 +2,16 @@
 #include "f4se/GameObjects.h"
 
 // ??_7ExtraPowerLinks@@6B@
-RelocAddr <uintptr_t> s_ExtraPowerLinksVtbl(0x02C7C3C8);
+RelocAddr <uintptr_t> s_ExtraPowerLinksVtbl(0x02C52378);
 
 // ??_7ExtraInstanceData@@6B@
-RelocAddr <uintptr_t> s_ExtraInstanceDataVtbl(0x02C7DC50);
+RelocAddr <uintptr_t> s_ExtraInstanceDataVtbl(0x02C53C00);
 
 // ??_7ExtraHealth@@6B@
-RelocAddr <uintptr_t> s_ExtraHealthVtbl(0x02C7C228);
+RelocAddr <uintptr_t> s_ExtraHealthVtbl(0x02C521D8);
 
 // ??_7ExtraMaterialSwap@@6B@
-RelocAddr <uintptr_t> s_ExtraMaterialSwapVtbl(0x02C7C928);
+RelocAddr <uintptr_t> s_ExtraMaterialSwapVtbl(0x02C528D8);
 
 bool ExtraDataList::PresenceBitfield::HasType(UInt32 type) const
 {
@@ -28,6 +28,11 @@ bool ExtraDataList::HasType(UInt32 type)
 
 void ExtraDataList::MarkType(UInt32 type, bool bCleared)
 {
+	if (!m_presence) {
+		m_presence = (PresenceBitfield*)Heap_Allocate(sizeof(PresenceBitfield));
+		memset(m_presence, 0, sizeof(PresenceBitfield));
+	}
+
 	UInt32 index = (type >> 3);
 	UInt8 bitMask = 1 << (type % 8);
 	UInt8& flag = m_presence->bits[index];

@@ -811,11 +811,19 @@ public:
 	enum Flags
 	{
 		kUnk1 = 0x80000,
-		kUnk2 = 0x40000
+		kUnk2 = 0x40000,
+
+		kWeaponStateShift = 1,
+		kWeaponStateMask = 0x07,
+
+		kWeaponState_Drawn = 0x03,
 	};
 
 	UInt32	unk08;	// 08
 	UInt32	flags;	// 0C
+
+	UInt32 GetWeaponState() { return (flags >> kWeaponStateShift) & kWeaponStateMask; }
+	bool IsWeaponDrawn()	{ return GetWeaponState() >= kWeaponState_Drawn; }
 };
 
 // 08
@@ -1510,11 +1518,11 @@ class BGSInventoryList
 public:
 	UInt64	unk00;	// 00
 	tArray<BSTEventSink<BGSInventoryListEvent::Event>> eventSinks;	// 08
-	UInt64	unk20[(0x58-0x20)/8];	// 20
-	tArray<BGSInventoryItem> items;	// 58
-	float		inventoryWeight;	// 70 - is (-1) when not calculated
-	UInt32		unk74;				// 74
-	SimpleLock	inventoryLock;		// 78
+	UInt64	unk20[(0x58-0x20)/8];		// 20
+	tArray<BGSInventoryItem> items;		// 58
+	float			inventoryWeight;	// 70 - is (-1) when not calculated
+	UInt32			unk74;				// 74
+	BSReadWriteLock	inventoryLock;		// 78
 };
 
 class IAliasFunctor

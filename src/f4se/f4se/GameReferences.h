@@ -245,6 +245,7 @@ public:
 	DEFINE_MEMBER_FN(GetWorldspace, TESWorldSpace*, 0x0040F170);
 	DEFINE_MEMBER_FN(GetInventoryWeight, float, 0x00400350);
 	DEFINE_MEMBER_FN(GetCarryWeight, float, 0x00D870D0);
+	// 7055D6CB4B64E11E63908512704F8871CEC025D3+11E
 	DEFINE_MEMBER_FN_1(ForEachAlias, void, 0x003F7840, IAliasFunctor * functor);
 };
 STATIC_ASSERT(offsetof(TESObjectREFR, parentCell) == 0xB8);
@@ -460,6 +461,7 @@ public:
 	{
 		return (actorFlags & kFlag_Teammate) == kFlag_Teammate;
 	}
+	bool GetEquippedExtraData(UInt32 slotIndex, ExtraDataList ** extraData);
 
 	MEMBER_FN_PREFIX(Actor);
 	DEFINE_MEMBER_FN(QueueUpdate, void, 0x00D8A0D0, bool bDoFaceGen, UInt32 unk2, bool DoQueue, UInt32 flags); // 0, 0, 1, 0

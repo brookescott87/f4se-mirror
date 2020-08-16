@@ -336,7 +336,7 @@ namespace papyrusObjectReference {
 
 		auto inventory = refr->inventoryList;
 		if(inventory) {
-			inventory->inventoryLock.Lock();
+			inventory->inventoryLock.LockForRead();
 
 			for(int i = 0; i < inventory->items.count; i++) {
 				BGSInventoryItem item;
@@ -345,7 +345,7 @@ namespace papyrusObjectReference {
 				results.Push(&item.form);
 			}
 
-			inventory->inventoryLock.Release();
+			inventory->inventoryLock.Unlock();
 		}
 
 		return results;
@@ -590,7 +590,8 @@ namespace papyrusObjectReference {
 					NiPointer<BSShaderProperty> shaderProperty = ni_cast(geometry->shaderProperty, BSShaderProperty);
 					if(shaderProperty)
 					{
-						std::string fullPath(shaderProperty->m_name ? shaderProperty->m_name.c_str() : nullptr);
+						const char * shaderPath = shaderProperty->m_name.c_str();
+						std::string fullPath(shaderPath ? shaderPath : "");
 						if(fullPath.length() == 0)
 							return false;
 

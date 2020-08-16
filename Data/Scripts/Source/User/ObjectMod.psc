@@ -1,7 +1,7 @@
 Scriptname ObjectMod extends Form Native Hidden
 
 
-; F4SE additions built 2018-07-26 02:10:51.610000 UTC
+; F4SE additions built 2019-06-14 04:55:00.171000 UTC
 
 ; Boolean type, only accepts
 ; Operator: Set/And/Or
